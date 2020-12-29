@@ -31,7 +31,7 @@ public class NormalServiceImpl implements INormalService {
      */
     @Override
     public List<SysTask> getById(Long id){
-        return normalMapper.getById(id);
+        return normalMapper.getMyTask(id);
     }
 
     /**

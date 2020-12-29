@@ -12,6 +12,7 @@
         <result column="assignee" jdbcType="INTEGER" property="assignee" />
         <result column="assign_time" jdbcType="DATE" property="assignTime" />
     </resultMap>
+
     <select id="getById" resultType="com.example.demo.model.SysTask">
         select * from sys_task where id=#{id}
     </select>
@@ -20,7 +21,7 @@
         select * from sys_task where id=#{id}
     </select>
 
-    <select id="getMyTask" resultMap="taskMap">
+    <select id="getMyTask" resultType="com.example.demo.model.SysTask">
         select * from sys_task where assignee=#{id} order by assign_time desc;
     </select>
 </mapper>
