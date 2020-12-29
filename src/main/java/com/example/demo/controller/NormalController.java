@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @description: NormalController
@@ -33,5 +34,18 @@ public class NormalController {
     public List<SysTask> getById(Long id){
 
         return normalService.getById(id);
+    }
+
+    /**
+     * 根据id 查询对象
+     *
+     * @param id id
+     * @return 对象
+     * @author leiming5
+     */
+    @GetMapping("normal/getByMap")
+    public List<Map<String, Object>> getByMap(Long id){
+
+        return normalService.getByMap(id);
     }
 }

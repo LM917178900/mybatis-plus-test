@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.SysTask;
 
 import java.util.List;
+import java.util.Map;
 
 public interface INormalService {
 
@@ -14,4 +15,6 @@ public interface INormalService {
      * @author leiming5
      */
     List<SysTask> getById(Long id);
+
+    List<Map<String, Object>> getByMap(Long id);
 }

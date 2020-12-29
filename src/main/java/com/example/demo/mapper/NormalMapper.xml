@@ -16,6 +16,10 @@
         select * from sys_task where id=#{id}
     </select>
 
+    <select id="getByMap" resultType="java.util.Map">
+        select * from sys_task where id=#{id}
+    </select>
+
     <select id="getMyTask" resultMap="taskMap">
         select * from sys_task where assignee=#{id} order by assign_time desc;
     </select>
