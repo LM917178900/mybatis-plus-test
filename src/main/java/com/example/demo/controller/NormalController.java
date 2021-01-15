@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.ApiCode;
+import com.example.demo.model.ApiResult;
 import com.example.demo.model.SysTask;
 import com.example.demo.service.INormalService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,9 +33,13 @@ public class NormalController {
      * @author leiming5
      */
     @GetMapping("normal/getById")
-    public List<SysTask> getById(Long id){
+    public ApiResult getById(Long id){
 
-        return normalService.getById(id);
+        if(id==null){
+        return ApiResult.fail(ApiCode.PARAMETER_EXCEPTION);
+        }
+
+        return ApiResult.ok(normalService.getById(id));
     }
 
     /**
