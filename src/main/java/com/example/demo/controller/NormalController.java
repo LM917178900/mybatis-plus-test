@@ -51,8 +51,15 @@ public class NormalController {
      * @author leiming5
      */
     @GetMapping("normal/getByMap")
-    public List<Map<String, Object>> getByMap(Long id) {
+    public ApiResult getByMap(Long id) throws InterruptedException {
 
-        return normalService.getByMap(id);
+        Thread.sleep(9000);
+
+        if (id == null) {
+            return ApiResult.fail(ApiCode.PARAMETER_EXCEPTION);
+        }
+
+
+        return ApiResult.ok(normalService.getByMap(id));
     }
 }
