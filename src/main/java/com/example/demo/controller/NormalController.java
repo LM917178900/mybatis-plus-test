@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.ApiCode;
 import com.example.demo.model.ApiResult;
-import com.example.demo.model.SysTask;
 import com.example.demo.service.INormalService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +19,7 @@ import java.util.Map;
 public class NormalController {
 
     /**
-     *  service 接口哦
+     * service 接口哦
      */
     @Resource
     private INormalService normalService;
@@ -33,10 +32,12 @@ public class NormalController {
      * @author leiming5
      */
     @GetMapping("normal/getById")
-    public ApiResult getById(Long id){
+    public ApiResult getById(Long id) throws InterruptedException {
 
-        if(id==null){
-        return ApiResult.fail(ApiCode.PARAMETER_EXCEPTION);
+        Thread.sleep(3000);
+
+        if (id == null) {
+            return ApiResult.fail(ApiCode.PARAMETER_EXCEPTION);
         }
 
         return ApiResult.ok(normalService.getById(id));
@@ -50,7 +51,7 @@ public class NormalController {
      * @author leiming5
      */
     @GetMapping("normal/getByMap")
-    public List<Map<String, Object>> getByMap(Long id){
+    public List<Map<String, Object>> getByMap(Long id) {
 
         return normalService.getByMap(id);
     }
