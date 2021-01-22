@@ -10,23 +10,26 @@ import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
-@MappedTypes({Object.class, JSONObject.class})
+@MappedTypes({JSONObject.class})
 public class JsonTypeHandler extends BaseTypeHandler<Object> {
 
     private static final PGobject jsonObject = new PGobject();
 
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, Object o, JdbcType jdbcType) throws SQLException {
-        jsonObject.setType("json");
+        jsonObject.setType("jsonb");
         jsonObject.setValue(o.toString());
         preparedStatement.setObject(i, jsonObject);
     }
 
     @Override
-    public Object getNullableResult(ResultSet resultSet, String s) throws SQLException {
-        return resultSet.getString(s);
+    public Map getNullableResult(ResultSet resultSet, String s) throws SQLException {
+        return JSONObject.parseObject(resultSet.getString(s));
     }
+
+
 
     @Override
     public Object getNullableResult(ResultSet resultSet, int i) throws SQLException {

@@ -63,13 +63,13 @@ public class SysLogController {
     @PostMapping("/test/add")
     public ApiResult add(@RequestBody SysLogVo sysLogVo){
 
-        SysLog sysLog = new SysLog();
-        BeanUtils.copyProperties(sysLogVo, sysLog);
-        sysLog.setLogData(JSON.toJSONString(sysLogVo.getLogData()));
-        sysLog.setGmtCreate(new Date());
-
-        List<SysLog> logs = Collections.singletonList(sysLog);
-        sysLogMapper.batchInsert(logs);
+//        SysLog sysLog = new SysLog();
+//        BeanUtils.copyProperties(sysLogVo, sysLog);
+//        sysLog.setLogData(JSON.toJSONString(sysLogVo.getLogData()));
+//        sysLog.setGmtCreate(new Date());
+//
+//        List<SysLog> logs = Collections.singletonList(sysLog);
+//        sysLogMapper.batchInsert(logs);
 
         return ApiResult.ok();
     }
@@ -83,14 +83,14 @@ public class SysLogController {
      */
     @PostMapping("/test/edit")
     public ApiResult edit(@RequestBody SysLogVo sysLogVo){
-
-        SysLog sysLog = new SysLog();
-        BeanUtils.copyProperties(sysLogVo, sysLog);
-        sysLog.setLogData(JSON.toJSONString(sysLogVo.getLogData()));
-        sysLog.setGmtCreate(new Date());
-
-        List<SysLog> logs = Collections.singletonList(sysLog);
-        sysLogMapper.batchInsert(logs);
+//
+//        SysLog sysLog = new SysLog();
+//        BeanUtils.copyProperties(sysLogVo, sysLog);
+//        sysLog.setLogData(JSON.toJSONString(sysLogVo.getLogData()));
+//        sysLog.setGmtCreate(new Date());
+//
+//        List<SysLog> logs = Collections.singletonList(sysLog);
+//        sysLogMapper.batchInsert(logs);
 
         return ApiResult.ok();
     }

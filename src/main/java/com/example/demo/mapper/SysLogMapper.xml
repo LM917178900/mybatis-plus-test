@@ -29,23 +29,11 @@
         <result column="message" jdbcType="VARCHAR" property="message"/>
         <result column="api" jdbcType="VARCHAR" property="api"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
-        <result column="log_data" jdbcType="JAVA_OBJECT" property="logData"
+        <result column="log_data" property="logData"
                 typeHandler="com.example.demo.mybatis.JsonTypeHandler"
-                javaType="Object"/>
+                javaType="com.alibaba.fastjson.JSONObject"/>
     </resultMap>
-    <parameterMap id="loggMap" type="com.example.demo.model.SysLog">
-        <!-- column：主键在数据库中的列名 property：主键在pojo中的属性名 -->
-        <parameter property="id" jdbcType="INTEGER" resultMap="logMap"/>
-        <parameter jdbcType="VARCHAR" property="visitor" resultMap="logMap"/>
-        <parameter jdbcType="TIMESTAMP" property="gmtCreate" resultMap="logMap"/>
-        <parameter jdbcType="VARCHAR" property="level1Menu" resultMap="logMap"/>
-        <parameter jdbcType="VARCHAR" property="level2Menu" resultMap="logMap"/>
-        <parameter jdbcType="VARCHAR" property="level3Menu" resultMap="logMap"/>
-        <parameter jdbcType="VARCHAR" property="message" resultMap="logMap"/>
-        <parameter jdbcType="VARCHAR" property="api" resultMap="logMap"/>
-        <parameter jdbcType="INTEGER" property="status" resultMap="logMap"/>
-        <parameter jdbcType="JAVA_OBJECT" property="logData" resultMap="logMap"/>
-    </parameterMap>
+
     <select id="getById" resultMap="logMap">
         SELECT * FROM sys_log WHERE id = #{id};
     </select>

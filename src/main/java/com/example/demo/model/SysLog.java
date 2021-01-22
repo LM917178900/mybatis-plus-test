@@ -50,6 +50,6 @@ public class SysLog {
      * 当前处理对象的json格式，
      */
     @TableField("log_data")
-    private String logData;
+    private JSONObject logData;
 
 }
