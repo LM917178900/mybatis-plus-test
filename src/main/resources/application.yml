@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://172.17.172.160:5432/portal?currentSchema=public
+    url: jdbc:postgresql://172.17.172.160:5432/npi-pss?currentSchema=public
     username: postgres
     password: 123456
 

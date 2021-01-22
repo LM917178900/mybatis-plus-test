@@ -2,7 +2,7 @@
 mybatis-plus 和 mybatis 不同之处
 
 ### 1.pom 配置
-2. mybatis项目导入依赖：mybatis-spring-boot-starter
+2. mybatis项目导入依赖：mybatis-plus-boot-starter
 
 
 ### 3. yml配置   
