@@ -38,20 +38,25 @@
         SELECT * FROM sys_log WHERE id = #{id};
     </select>
 
-    <insert id="batchInsert">
+    <insert id="batchInsert" parameterType="com.example.demo.model.SysLog">
         INSERT INTO sys_log (visitor, gmt_create,
         level1_menu, level2_menu, level3_menu,
         message, api, status,log_data)
         VALUES
         <foreach collection="list" item="record" separator=",">
-            (#{record.visitor,jdbcType=VARCHAR}, #{record.gmtCreate,jdbcType=TIMESTAMP},
-            #{record.level1Menu,jdbcType=VARCHAR}, #{record.level2Menu,jdbcType=VARCHAR},
-            #{record.level3Menu,jdbcType=VARCHAR},
-            #{record.message,jdbcType=VARCHAR}, #{record.api,jdbcType=VARCHAR}, #{record.status,jdbcType=SMALLINT},
-            <if test="record.logData == null">null</if>
-            <if test="record.logData != null">(#{record.logData,jdbcType=VARCHAR})::jsonb </if>
+            (#{record.visitor}, #{record.gmtCreate},
+            #{record.level1Menu}, #{record.level2Menu},
+            #{record.level3Menu},
+            #{record.message}, #{record.api}, #{record.status},
+            <if test="record.logDataStr == null">null</if>
+            <if test="record.logDataStr != null">(#{record.logDataStr})::jsonb </if>
             )
         </foreach>
     </insert>
+    <update id="editById" parameterType="com.example.demo.model.SysLog">
+        update sys_log set
+        log_data=(#{bean.logDataStr})::jsonb
+        where id=#{bean.id}
+    </update>
 
 </mapper>

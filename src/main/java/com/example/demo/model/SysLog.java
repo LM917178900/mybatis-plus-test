@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -52,4 +53,15 @@ public class SysLog {
     @TableField("log_data")
     private JSONObject logData;
 
+    /**
+     * 封装字符串类型
+     */
+    private String logDataStr;
+
+
+    public void setLogData(JSONObject logData) {
+        this.logData = logData;
+        this.logDataStr = JSON.toJSONString(logData);
+        setGmtCreate(new Date());
+    }
 }
